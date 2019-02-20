@@ -8,7 +8,7 @@
     tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/register_tv_email"
+        android:id="@+id/register_et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -16,7 +16,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/register_tv_password"
+        android:id="@+id/register_et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
