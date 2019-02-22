@@ -12,8 +12,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/cameraicon" />
+        android:layout_marginTop="50dp" />
 
     <EditText
         android:id="@+id/main_et_username"
