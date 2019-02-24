@@ -7,34 +7,20 @@
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
-    <EditText
-        android:id="@+id/register_et_email"
+    <Button
+        android:id="@+id/register_btn_nrc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/register_et_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        android:layout_marginVertical="100dp"
+        android:layout_weight="1"
+        android:text="NRC" />
 
     <Button
-        android:id="@+id/register_btn_register"
+        android:id="@+id/register_btn_rcr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Register" />
-
-    <Button
-        android:id="@+id/register_btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Login" />
+        android:layout_marginVertical="100dp"
+        android:layout_weight="1"
+        android:text="Anganwadi" />
 
 </LinearLayout>
