@@ -3,20 +3,20 @@ package com.example.sihtry1.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
-public class NRC implements Parcelable {
+public class NRC {
     String user_id;
     int bed_count;
     int bed_vacant;
     String title;
-    URL reg_certi;
+    String reg_certi;
     String address;
     String state;
     String city;
     int pincode;
-    long phone;
-    String email;
+    String phone;
     boolean verified;
 
     public NRC() {
@@ -24,7 +24,7 @@ public class NRC implements Parcelable {
     }
 
 
-    public NRC(String user_id, int bed_count, int bed_vacant, String title, URL reg_certi, String address, String state, String city, int pincode, long phone, String email, boolean verified) {
+    public NRC(String user_id, int bed_count, int bed_vacant, String title, String reg_certi, String address, String state, String city, int pincode, String phone, boolean verified) {
         this.user_id = user_id;
         this.bed_count = bed_count;
         this.bed_vacant = bed_vacant;
@@ -35,7 +35,6 @@ public class NRC implements Parcelable {
         this.city = city;
         this.pincode = pincode;
         this.phone = phone;
-        this.email = email;
         this.verified = verified;
     }
 
@@ -71,11 +70,11 @@ public class NRC implements Parcelable {
         this.title = title;
     }
 
-    public URL getReg_certi() {
+    public String getReg_certi() {
         return reg_certi;
     }
 
-    public void setReg_certi(URL reg_certi) {
+    public void setReg_certi(String reg_certi) {
         this.reg_certi = reg_certi;
     }
 
@@ -111,20 +110,12 @@ public class NRC implements Parcelable {
         this.pincode = pincode;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public boolean isVerified() {
@@ -135,51 +126,4 @@ public class NRC implements Parcelable {
         this.verified = verified;
     }
 
-    protected NRC(Parcel in) {
-        String user_id;
-        int bed_count;
-        int bed_vacant;
-        String title;
-        URL reg_certi;
-        String address;
-        String state;
-        String city;
-        int pincode;
-        long phone;
-        String email;
-        boolean verified;
-    }
-
-    public static final Creator<NRC> CREATOR = new Creator<NRC>() {
-        @Override
-        public NRC createFromParcel(Parcel in) {
-            return new NRC(in);
-        }
-
-        @Override
-        public NRC[] newArray(int size) {
-            return new NRC[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int flags) {
-        parcel.writeString(user_id);
-        parcel.writeInt(bed_count);
-        parcel.writeInt(bed_vacant);
-        parcel.writeString(title);
-        parcel.writeString(reg_certi.toString());
-        parcel.writeString(address);
-        parcel.writeString(state);
-        parcel.writeString(city);
-        parcel.writeInt(pincode);
-        parcel.writeLong(phone);
-        parcel.writeString(email);
-        parcel.writeBooleanArray(new boolean[]{verified});
-    }
 }

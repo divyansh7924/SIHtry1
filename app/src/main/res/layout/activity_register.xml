@@ -31,14 +31,14 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/register_radio_nrc"
+            android:id="@+id/register_radio_rcr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Angranwadi" />
 
         <RadioButton
-            android:id="@+id/register_radio_rcr"
+            android:id="@+id/register_radio_nrc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

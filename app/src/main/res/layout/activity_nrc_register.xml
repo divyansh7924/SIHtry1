@@ -22,25 +22,6 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/nrc_reg_et_mail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-
-        <EditText
-            android:id="@+id/nrc_reg_et_pwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="Password"
-            android:inputType="textPassword" />
-
-        <EditText
             android:id="@+id/nrc_reg_et_bed_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +40,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/nrc_reg_et_name"
+            android:id="@+id/nrc_reg_et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

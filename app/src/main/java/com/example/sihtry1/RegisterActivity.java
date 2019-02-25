@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
             register_et_password.setError("Must be 6 or more character long");
             return;
         }
-        if (!(nrc.isSelected() || rcr.isSelected())) {
+        if (!(nrc.isChecked() || rcr.isChecked())) {
             Toast.makeText(getApplicationContext(), "Select NRC or Anganwadi", Toast.LENGTH_SHORT).show();
         }
 
@@ -93,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d("", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            if (nrc.isSelected()) {
+                            if (nrc.isChecked()) {
                                 register_nrc();
                             } else {
                                 Toast.makeText(getApplicationContext(), "ayega ayega", Toast.LENGTH_SHORT).show();
