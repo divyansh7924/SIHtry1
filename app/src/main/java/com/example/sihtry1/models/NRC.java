@@ -19,6 +19,10 @@ public class NRC implements Parcelable {
     String email;
     boolean verified;
 
+    public NRC() {
+
+    }
+
 
     public NRC(String user_id, int bed_count, int bed_vacant, String title, URL reg_certi, String address, String state, String city, int pincode, long phone, String email, boolean verified) {
         this.user_id = user_id;

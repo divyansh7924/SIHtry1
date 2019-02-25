@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,52 +21,39 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private Button register_btn_nrc;
-    private Button register_btn_rcr;
+    private Button register, login;
+    private EditText register_et_email, register_et_password;
+    private RadioButton nrc, rcr;
 
-//    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        register_btn_nrc = (Button) findViewById(R.id.register_btn_nrc);
-        register_btn_rcr = (Button) findViewById(R.id.register_btn_rcr);
 
-        register_btn_nrc.setOnClickListener(new View.OnClickListener() {
+        login = (Button) findViewById(R.id.register_btn_login);
+        register = (Button) findViewById(R.id.register_btn_register);
+        register_et_email = (EditText) findViewById(R.id.register_et_email);
+        register_et_password = (EditText) findViewById(R.id.register_et_password);
+        nrc = (RadioButton) findViewById(R.id.register_radio_nrc);
+        rcr = (RadioButton) findViewById(R.id.register_radio_rcr);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register_nrc();
+                login();
             }
         });
-
-        register_btn_rcr.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                register();
             }
         });
-
-//        register_btn_login = (Button) findViewById(R.id.register_btn_login);
-//        register_btn_register = (Button) findViewById(R.id.register_btn_register);
-//        register_et_email = (EditText) findViewById(R.id.register_et_email);
-//        register_et_password = (EditText) findViewById(R.id.register_et_password);
-//
-//        mAuth = FirebaseAuth.getInstance();
-//
-//        register_btn_login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                login();
-//            }
-//        });
-//        register_btn_register.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                register();
-//            }
-//        });
 
 
     }
@@ -75,50 +63,59 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    private void register() {
-//        String email, password;
-//        email = register_et_email.getText().toString().trim();
-//        password = register_et_password.getText().toString();
-//
-//        if (email.isEmpty()) {
-//            register_et_email.setError("Cannot be empty");
-//            return;
-//        }
-//        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            register_et_email.setError("Not Valid Email");
-//            return;
-//        }
-//        if (password.isEmpty() || password.length() < 6) {
-//            register_et_password.setError("Must be 6 or more character long");
-//            return;
-//        }
-//
-//        mAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            Log.d("", "createUserWithEmail:success");
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                            loginUpdateUI(user);
-//                        } else {
-//                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-//                                Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    }
-//                });
-//
-//    }
-//
-//    private void login() {
-//        Intent intent = new Intent(this, LoginActivity.class);
-//        startActivity(intent);
-//        finish();
-//    }
+    private void register() {
+        String email, password;
+        email = register_et_email.getText().toString().trim();
+        password = register_et_password.getText().toString();
+
+        if (email.isEmpty()) {
+            register_et_email.setError("Cannot be empty");
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            register_et_email.setError("Not Valid Email");
+            return;
+        }
+        if (password.isEmpty() || password.length() < 6) {
+            register_et_password.setError("Must be 6 or more character long");
+            return;
+        }
+        if (!(nrc.isSelected() || rcr.isSelected())) {
+            Toast.makeText(getApplicationContext(), "Select NRC or Anganwadi", Toast.LENGTH_SHORT).show();
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("", "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                            if (nrc.isSelected()) {
+                                register_nrc();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "ayega ayega", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+
+    }
+
+    private void login() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 //
 //    private void loginUpdateUI(FirebaseUser user) {
 //        Intent intent = new Intent(this, MainActivity.class);
