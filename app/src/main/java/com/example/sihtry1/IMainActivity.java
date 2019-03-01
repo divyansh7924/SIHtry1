@@ -70,6 +70,27 @@ public class IMainActivity {
         });
     }
 
+    public void createNewReferral(final Context context, String user_id, String title,
+                             String reg_certi, String reg_num, String address, String state, String city, int pincode, String phone, String email, final boolean verified) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        DocumentReference newNoteRef = db.collection("rcr").document();
+
+        RCR rcr = new RCR(user_id, reg_certi, reg_num, title, address, state, city, pincode, phone, email, verified);
+
+        newNoteRef.set(rcr).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    verificationDue(context);
+
+                } else {
+                    Toast.makeText(context.getApplicationContext(), "Registeration Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     public void verificationDue(Context context) {
         Intent intent = new Intent(context, VerificationDueActivity.class);
         context.startActivity(intent);

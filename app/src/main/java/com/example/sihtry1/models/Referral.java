@@ -12,31 +12,33 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.annotation.Nullable;
+
 @IgnoreExtraProperties
-public class Referral implements Parcelable {
+public class Referral {
     String child_first_name;
     String referral_id;
     String child_last_name;
     String guadian_name;
     String ncr_id;
-    String rcr_id;
+    @Nullable String rcr_id;
     long guardian_aadhar_num;
     char gender;
-    URL child_pic;
+    String child_pic;
     Date dob;
     String symptoms;
     int asha_measure;
     int height;
     int weight;
-    long phone;
+    String phone;
     String state;
     String city;
     int pincode;
     String address;
 
     public Referral(String referral_id, String child_first_name, String child_last_name, String guadian_name, String rcr_id, String ncr_id,
-                    long guardian_aadhar_num, char gender, URL child_pic, Date dob, String symptoms, int asha_measure, int height, int weight,
-                    long phone, String address, String state, String city, int pincode) {
+                    long guardian_aadhar_num, char gender, String child_pic, Date dob, String symptoms, int asha_measure, int height, int weight,
+                    String phone, String address, String state, String city, int pincode) {
         this.child_first_name = child_first_name;
         this.child_last_name = child_last_name;
         this.referral_id = referral_id;
@@ -58,17 +60,17 @@ public class Referral implements Parcelable {
         this.address = address;
     }
 
-    private Date stringToDate(String dateString) {
-        String pattern = "E M d H:m:s z y";
-        DateFormat df = new SimpleDateFormat(pattern);
-        Date date = new Date();
-        try {
-            date = df.parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
-    }
+//    private Date stringToDate(String dateString) {
+//        String pattern = "E M d H:m:s z y";
+//        DateFormat df = new SimpleDateFormat(pattern);
+//        Date date = new Date();
+//        try {
+//            date = df.parse(dateString);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return date;
+//    }
 
     public String getChild_first_name() {
         return child_first_name;
@@ -134,11 +136,11 @@ public class Referral implements Parcelable {
         this.gender = gender;
     }
 
-    public URL getChild_pic() {
+    public String getChild_pic() {
         return child_pic;
     }
 
-    public void setChild_pic(URL child_pic) {
+    public void setChild_pic(String child_pic) {
         this.child_pic = child_pic;
     }
 
@@ -182,11 +184,11 @@ public class Referral implements Parcelable {
         this.weight = weight;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -222,71 +224,4 @@ public class Referral implements Parcelable {
         this.address = address;
     }
 
-    protected Referral(Parcel in) {
-        child_first_name = in.readString();
-        referral_id = in.readString();
-        child_last_name = in.readString();
-        guadian_name = in.readString();
-        ncr_id = in.readString();
-        rcr_id = in.readString();
-        guardian_aadhar_num = in.readLong();
-        char[] gender_array = new char[1];
-        in.readCharArray(gender_array);
-        gender = gender_array[0];
-        try {
-            URL child_pic = new URL(in.readString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        dob = stringToDate(in.readString());
-        symptoms = in.readString();
-        asha_measure = in.readInt();
-        height = in.readInt();
-        weight = in.readInt();
-        phone = in.readLong();
-        state = in.readString();
-        city = in.readString();
-        pincode = in.readInt();
-        address = in.readString();
-    }
-
-    public static final Creator<Referral> CREATOR = new Creator<Referral>() {
-        @Override
-        public Referral createFromParcel(Parcel in) {
-            return new Referral(in);
-        }
-
-        @Override
-        public Referral[] newArray(int size) {
-            return new Referral[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int flags) {
-        parcel.writeString(child_first_name);
-        parcel.writeString(referral_id);
-        parcel.writeString(child_last_name);
-        parcel.writeString(guadian_name);
-        parcel.writeString(ncr_id);
-        parcel.writeString(rcr_id);
-        parcel.writeLong(guardian_aadhar_num);
-        parcel.writeCharArray(new char[]{gender});
-        parcel.writeString(child_pic.toString());
-        parcel.writeString(dob.toString());
-        parcel.writeString(symptoms);
-        parcel.writeInt(asha_measure);
-        parcel.writeInt(height);
-        parcel.writeInt(weight);
-        parcel.writeLong(phone);
-        parcel.writeString(state);
-        parcel.writeString(city);
-        parcel.writeInt(pincode);
-        parcel.writeString(address);
-    }
 }

@@ -121,20 +121,6 @@
                 android:layout_marginRight="20dp"
                 android:hint="Symptom" />
 
-            <ImageButton
-                android:id="@+id/add_symptom"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="170dp"
-                android:background="#000"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="25dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="10dp" />
-
-
             <EditText
                 android:id="@+id/ashamsmt"
                 android:layout_width="match_parent"
