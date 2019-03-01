@@ -103,8 +103,16 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("LoginActivity.java", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "Authentication failed.",
+                              //      Toast.LENGTH_SHORT).show();
+                            
+                            //dialog box on login failed
+                            new AlertDialog.Builder(this)
+                                .setTitle("Oops")
+                                .setMessage("Authentication failed")
+                                .setPositiveButton(android.R.string.ok, null)
+                                .show();
+                             }
                         }
                     }
                 });
