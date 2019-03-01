@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateReferralActivity"></activity>
+        <activity android:name=".CreateReferralActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".RCRRegisterActivity" />
         <activity android:name=".RCRActivity" />
         <activity android:name=".NRCActivity" />
@@ -26,13 +32,7 @@
             android:label="Register" />
         <activity
             android:name=".LoginActivity"
-            android:label="Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="Login"></activity>
         <activity android:name=".MainActivity" />
     </application>
 
