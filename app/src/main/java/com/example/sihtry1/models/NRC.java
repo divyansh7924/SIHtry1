@@ -9,9 +9,11 @@ import java.net.URL;
 public class NRC {
     String user_id;
     int bed_count;
+    String email;
     int bed_vacant;
     String title;
     String reg_certi;
+    String reg_num;
     String address;
     String state;
     String city;
@@ -24,7 +26,7 @@ public class NRC {
     }
 
 
-    public NRC(String user_id, int bed_count, int bed_vacant, String title, String reg_certi, String address, String state, String city, int pincode, String phone, boolean verified) {
+    public NRC(String user_id, int bed_count, int bed_vacant, String title, String reg_certi, String reg_num, String address, String state, String city, int pincode, String phone, boolean verified) {
         this.user_id = user_id;
         this.bed_count = bed_count;
         this.bed_vacant = bed_vacant;
@@ -33,6 +35,7 @@ public class NRC {
         this.address = address;
         this.state = state;
         this.city = city;
+        this.reg_num = reg_num;
         this.pincode = pincode;
         this.phone = phone;
         this.verified = verified;
@@ -126,4 +129,11 @@ public class NRC {
         this.verified = verified;
     }
 
+    public String getreg_num() {
+        return reg_num;
+    }
+
+    public void setreg_num(String reg_num) {
+        this.reg_num = reg_num;
+    }
 }

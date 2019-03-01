@@ -16,7 +16,7 @@ import java.net.URL;
 public class NRCRegisterActivity extends AppCompatActivity {
 
     private Button submit;
-    private EditText et_bed_count, et_bed_vacant, et_title, et_address, et_city, et_state, et_pincode, et_phone;
+    private EditText et_bed_count, et_bed_vacant, et_title, et_address, et_city, et_state, et_pincode, et_phone, et_reg_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class NRCRegisterActivity extends AppCompatActivity {
         et_state = (EditText) findViewById(R.id.nrc_reg_et_state);
         et_pincode = (EditText) findViewById(R.id.nrc_reg_et_pincode);
         et_phone = (EditText) findViewById(R.id.nrc_reg_et_phone);
+        et_reg_num = (EditText) findViewById(R.id.nrc_reg_et_reg_num);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +45,7 @@ public class NRCRegisterActivity extends AppCompatActivity {
                 String url = "https://stackoverflow.com/questions/6367509/how-to-use-intent-in-non-activity-class";
                 iMainActivity.createNewNRC(getBaseContext(), userId, Integer.valueOf(et_bed_count.getText().toString()),
                         Integer.valueOf(et_bed_vacant.getText().toString()), et_title.getText().toString(),
-                        url.toString(), et_address.getText().toString(), et_state.getText().toString(), et_city.getText().toString(),
+                        url.toString(), et_reg_num.getText().toString(), et_address.getText().toString(), et_state.getText().toString(), et_city.getText().toString(),
                         Integer.valueOf(et_pincode.getText().toString()), et_phone.getText().toString(),
                         userEmail, false);
             }

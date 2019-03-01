@@ -1,26 +1,22 @@
 package com.example.sihtry1.models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class RCR implements Parcelable {
+public class RCR {
     String user_id;
-    URL reg_certi;
+    String reg_certi;
     String title;
     String address;
     String state;
+    String reg_num;
     String city;
     int pincode;
-    long phone;
+    String phone;
     String email;
     boolean verified;
 
-    public RCR(String user_id, URL reg_certi, String title, String address, String state, String city, int pincode, long phone, String email, boolean verified) {
+    public RCR(String user_id, String reg_certi, String reg_num, String title, String address, String state, String city, int pincode, String phone, String email, boolean verified) {
         this.user_id = user_id;
         this.reg_certi = reg_certi;
+        this.reg_num = reg_num;
         this.title = title;
         this.address = address;
         this.state = state;
@@ -39,11 +35,11 @@ public class RCR implements Parcelable {
         this.user_id = user_id;
     }
 
-    public URL getReg_certi() {
+    public String getReg_certi() {
         return reg_certi;
     }
 
-    public void setReg_certi(URL reg_certi) {
+    public void setReg_certi(String reg_certi) {
         this.reg_certi = reg_certi;
     }
 
@@ -87,11 +83,11 @@ public class RCR implements Parcelable {
         this.pincode = pincode;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -111,53 +107,11 @@ public class RCR implements Parcelable {
         this.verified = verified;
     }
 
-    protected RCR(Parcel in) {
-        user_id = in.readString();
-        try {
-            reg_certi = new URL(in.readString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        title = in.readString();
-        address = in.readString();
-        state = in.readString();
-        city = in.readString();
-        pincode = in.readInt();
-        phone = in.readLong();
-        email = in.readString();
-        boolean verified_array[] = new boolean[1];
-        in.readBooleanArray(verified_array);
-        verified = verified_array[0];
+    public String getReg_num() {
+        return reg_num;
     }
 
-    public static final Creator<RCR> CREATOR = new Creator<RCR>() {
-        @Override
-        public RCR createFromParcel(Parcel in) {
-            return new RCR(in);
-        }
-
-        @Override
-        public RCR[] newArray(int size) {
-            return new RCR[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int flags) {
-        parcel.writeString(user_id);
-        parcel.writeString(reg_certi.toString());
-        parcel.writeString(title);
-        parcel.writeString(address);
-        parcel.writeString(state);
-        parcel.writeString(state);
-        parcel.writeInt(pincode);
-        parcel.writeLong(phone);
-        parcel.writeString(email);
-        parcel.writeBooleanArray(new boolean[]{verified});
+    public void setReg_num(String reg_num) {
+        this.reg_num = reg_num;
     }
 }

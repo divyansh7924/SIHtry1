@@ -55,7 +55,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void register_nrc() {
@@ -96,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if (nrc.isChecked()) {
                                 register_nrc();
                             } else {
-                                Toast.makeText(getApplicationContext(), "ayega ayega", Toast.LENGTH_SHORT).show();
+                                register_rcr();
                             }
 
                         } else {
@@ -109,6 +108,11 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void register_rcr() {
+        Intent intent = new Intent(this, RCRRegisterActivity.class);
+        startActivity(intent);
     }
 
     private void login() {
