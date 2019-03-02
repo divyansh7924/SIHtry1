@@ -13,6 +13,10 @@ public class RCR {
     String email;
     boolean verified;
 
+    public RCR() {
+
+    }
+
     public RCR(String user_id, String reg_certi, String reg_num, String title, String address, String state, String city, int pincode, String phone, String email, boolean verified) {
         this.user_id = user_id;
         this.reg_certi = reg_certi;

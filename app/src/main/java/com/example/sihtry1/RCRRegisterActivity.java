@@ -69,7 +69,7 @@ public class RCRRegisterActivity extends AppCompatActivity {
                 IMainActivity iMainActivity = new IMainActivity();
                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                String url = "https://stackoverflow.com/questions/6367509/how-to-use-intent-in-non-activity-class";
+                String url = " ";
                 iMainActivity.createNewRCR(getApplicationContext(), userId, et_title.getText().toString(),
                         url, et_reg_num.getText().toString(), et_address.getText().toString(), et_state.getText().toString(), et_city.getText().toString(), Integer.parseInt(et_pincode.getText().toString()), et_phone.getText().toString(), userEmail, false);
 

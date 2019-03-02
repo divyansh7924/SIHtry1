@@ -11,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateReferralActivity">
-
-        </activity>
+        <activity android:name=".StatesActivity"></activity>
+        <activity android:name=".CreateReferralActivity"></activity>
         <activity android:name=".RCRRegisterActivity" />
         <activity android:name=".RCRActivity" />
         <activity android:name=".NRCActivity" />
