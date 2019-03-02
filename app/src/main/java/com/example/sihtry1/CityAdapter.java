@@ -12,32 +12,32 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-public class StateAdapter extends FirestoreRecyclerAdapter<RCR, StateAdapter.StateHolder> {
+public class CityAdapter extends FirestoreRecyclerAdapter<RCR, CityAdapter.CityHolder> {
     private OnItemClickListener listener;
 
 
-    public StateAdapter(@NonNull FirestoreRecyclerOptions<RCR> options) {
+    public CityAdapter(@NonNull FirestoreRecyclerOptions<RCR> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull StateHolder holder, int position, @NonNull RCR model) {
-        holder.textViewtitle.setText(model.getState());
+    protected void onBindViewHolder(@NonNull CityHolder holder, int position, @NonNull RCR model) {
+        holder.textViewtitle.setText(model.getCity());
     }
 
     @NonNull
     @Override
-    public StateHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public CityHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        return new StateHolder(v);
+        return new CityHolder(v);
 
 
     }
 
-    class StateHolder extends RecyclerView.ViewHolder{
+    class CityHolder extends RecyclerView.ViewHolder{
         TextView textViewtitle;
 
-        public StateHolder(@NonNull View itemView) {
+        public CityHolder(@NonNull View itemView) {
             super(itemView);
             textViewtitle = itemView.findViewById(R.id.textviewtitle);
 

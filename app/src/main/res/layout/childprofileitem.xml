@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
@@ -22,10 +22,31 @@
         android:layout_marginLeft="5dp"
         android:paddingVertical="17dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/textviewparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:text="t"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/textviewtitle"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/textviewdob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:text="t"
+        android:layout_marginRight="5dp" />
+
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#000"></View>
 
 
-</LinearLayout>
+</RelativeLayout>
