@@ -1,5 +1,6 @@
 package com.example.sihtry1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,9 +38,8 @@ public class StatesActivity extends AppCompatActivity {
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 NRC state = documentSnapshot.toObject(NRC.class);
                 String id = documentSnapshot.getId();
-
                 Toast.makeText(StatesActivity.this,"position: " + position + "ID: " + id, Toast.LENGTH_SHORT).show();
-
+                showcities();
             }
         });
 
@@ -51,9 +51,11 @@ public class StatesActivity extends AppCompatActivity {
 
         Query query = stateref.orderBy("state", Query.Direction.ASCENDING);
 
+
         FirestoreRecyclerOptions<RCR> options = new FirestoreRecyclerOptions.Builder<RCR>()
                 .setQuery(query, RCR.class)
                 .build();
+
 
 
         adapter = new StateAdapter(options);
@@ -76,4 +78,9 @@ public class StatesActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+    public void showcities(){
+        Intent intent = new Intent(this, CitiesActivity.class);
+        startActivity(intent);
+    }
 }
+
