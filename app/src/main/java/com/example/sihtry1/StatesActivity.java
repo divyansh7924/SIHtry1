@@ -25,6 +25,7 @@ public class StatesActivity extends AppCompatActivity {
     private CollectionReference stateref = db.collection("nrc");
 
     private StateAdapter adapter;
+    String stateselected;
 
 
     @Override
@@ -38,8 +39,10 @@ public class StatesActivity extends AppCompatActivity {
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 NRC state = documentSnapshot.toObject(NRC.class);
                 String id = documentSnapshot.getId();
-                Toast.makeText(StatesActivity.this,"position: " + position + "ID: " + id, Toast.LENGTH_SHORT).show();
+                stateselected = state.getState();
+                Toast.makeText(StatesActivity.this,"position: " + position + "ID: " + id + stateselected, Toast.LENGTH_SHORT).show();
                 showcities();
+
             }
         });
 
@@ -80,6 +83,7 @@ public class StatesActivity extends AppCompatActivity {
     }
     public void showcities(){
         Intent intent = new Intent(this, CitiesActivity.class);
+        intent.putExtra("message", stateselected);
         startActivity(intent);
     }
 }
