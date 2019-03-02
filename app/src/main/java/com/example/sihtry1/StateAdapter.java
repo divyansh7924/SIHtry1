@@ -22,7 +22,7 @@ public class StateAdapter extends FirestoreRecyclerAdapter<RCR, StateAdapter.Sta
 
     @Override
     protected void onBindViewHolder(@NonNull StateHolder holder, int position, @NonNull RCR model) {
-        holder.textViewtitle.setText(model.getState());
+        holder.textViewtitle.setText(model.getState() + "\t\t\t" + '(' + model.getCity() + ')');
     }
 
     @NonNull
