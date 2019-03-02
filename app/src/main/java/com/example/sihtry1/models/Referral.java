@@ -22,34 +22,39 @@ public class Referral {
     String guadian_name;
     String nrc_id;
     String rcr_id;
-    long guardian_aadhar_num;
-    char child_gender;
-    String child_pic;
-    Date dob;
+    String guardian_aadhar_num;
+    String child_gender;
+    int day_of_birth;
+    int month_of_birth;
+    int year_of_birth;
     String symptoms;
-    int asha_measure;
-    int height;
-    int weight;
+    String blood_group;
+    float asha_measure;
+    float height;
+    float weight;
     String phone;
     String state;
     String city;
     int pincode;
     String address;
 
-    public Referral(String referral_id, String child_first_name, String child_last_name, String guadian_name, String rcr_id, String nrc_id,
-                    long guardian_aadhar_num, char child_gender, String child_pic, Date dob, String symptoms, int asha_measure, int height, int weight,
-                    String phone, String address, String state, String city, int pincode) {
+    public Referral() {
+    }
+
+    public Referral(String child_first_name, String referral_id, String child_last_name, String guadian_name, String nrc_id, String rcr_id, String guardian_aadhar_num, String child_gender, int day_of_birth, int month_of_birth, int year_of_birth, String symptoms, String blood_group, float asha_measure, float height, float weight, String phone, String state, String city, int pincode, String address) {
         this.child_first_name = child_first_name;
-        this.child_last_name = child_last_name;
         this.referral_id = referral_id;
+        this.child_last_name = child_last_name;
         this.guadian_name = guadian_name;
         this.nrc_id = nrc_id;
         this.rcr_id = rcr_id;
         this.guardian_aadhar_num = guardian_aadhar_num;
         this.child_gender = child_gender;
-        this.child_pic = child_pic;
-        this.dob = dob;
+        this.day_of_birth = day_of_birth;
+        this.month_of_birth = month_of_birth;
+        this.year_of_birth = year_of_birth;
         this.symptoms = symptoms;
+        this.blood_group = blood_group;
         this.asha_measure = asha_measure;
         this.height = height;
         this.weight = weight;
@@ -59,18 +64,6 @@ public class Referral {
         this.pincode = pincode;
         this.address = address;
     }
-
-//    private Date stringToDate(String dateString) {
-//        String pattern = "E M d H:m:s z y";
-//        DateFormat df = new SimpleDateFormat(pattern);
-//        Date date = new Date();
-//        try {
-//            date = df.parse(dateString);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        return date;
-//    }
 
     public String getChild_first_name() {
         return child_first_name;
@@ -104,11 +97,11 @@ public class Referral {
         this.guadian_name = guadian_name;
     }
 
-    public String getnrc_id() {
+    public String getNrc_id() {
         return nrc_id;
     }
 
-    public void setnrc_id(String nrc_id) {
+    public void setNrc_id(String nrc_id) {
         this.nrc_id = nrc_id;
     }
 
@@ -120,36 +113,44 @@ public class Referral {
         this.rcr_id = rcr_id;
     }
 
-    public long getGuardian_aadhar_num() {
+    public String getGuardian_aadhar_num() {
         return guardian_aadhar_num;
     }
 
-    public void setGuardian_aadhar_num(long guardian_aadhar_num) {
+    public void setGuardian_aadhar_num(String guardian_aadhar_num) {
         this.guardian_aadhar_num = guardian_aadhar_num;
     }
 
-    public char getchild_gender() {
+    public String getChild_gender() {
         return child_gender;
     }
 
-    public void setchild_gender(char child_gender) {
+    public void setChild_gender(String child_gender) {
         this.child_gender = child_gender;
     }
 
-    public String getChild_pic() {
-        return child_pic;
+    public int getDay_of_birth() {
+        return day_of_birth;
     }
 
-    public void setChild_pic(String child_pic) {
-        this.child_pic = child_pic;
+    public void setDay_of_birth(int day_of_birth) {
+        this.day_of_birth = day_of_birth;
     }
 
-    public Date getDob() {
-        return dob;
+    public int getMonth_of_birth() {
+        return month_of_birth;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setMonth_of_birth(int month_of_birth) {
+        this.month_of_birth = month_of_birth;
+    }
+
+    public int getYear_of_birth() {
+        return year_of_birth;
+    }
+
+    public void setYear_of_birth(int year_of_birth) {
+        this.year_of_birth = year_of_birth;
     }
 
     public String getSymptoms() {
@@ -160,27 +161,35 @@ public class Referral {
         this.symptoms = symptoms;
     }
 
-    public int getAsha_measure() {
+    public String getBlood_group() {
+        return blood_group;
+    }
+
+    public void setBlood_group(String blood_group) {
+        this.blood_group = blood_group;
+    }
+
+    public float getAsha_measure() {
         return asha_measure;
     }
 
-    public void setAsha_measure(int asha_measure) {
+    public void setAsha_measure(float asha_measure) {
         this.asha_measure = asha_measure;
     }
 
-    public int getHeight() {
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(float height) {
         this.height = height;
     }
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
@@ -223,5 +232,4 @@ public class Referral {
     public void setAddress(String address) {
         this.address = address;
     }
-
 }
