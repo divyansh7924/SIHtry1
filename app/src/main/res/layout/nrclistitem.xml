@@ -12,7 +12,9 @@
     android:paddingLeft="15dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
-    android:paddingBottom="15dp">>
+    android:paddingBottom="15dp">
+
+
 
     <TextView
         android:id="@+id/textviewnrctitle"
@@ -22,6 +24,7 @@
         android:layout_marginLeft="5dp"
         android:paddingVertical="17dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
 
 
     <TextView
