@@ -10,8 +10,11 @@ import android.widget.TextView;
 import com.example.sihtry1.models.RCR;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class StateAdapter extends FirestoreRecyclerAdapter<RCR, StateAdapter.StateHolder> {
+    private OnItemClickListener listener;
+
 
     public StateAdapter(@NonNull FirestoreRecyclerOptions<RCR> options) {
         super(options);
@@ -37,6 +40,22 @@ public class StateAdapter extends FirestoreRecyclerAdapter<RCR, StateAdapter.Sta
         public StateHolder(@NonNull View itemView) {
             super(itemView);
             textViewtitle = itemView.findViewById(R.id.textviewtitle);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
+    }
+    public interface OnItemClickListener{
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 }
