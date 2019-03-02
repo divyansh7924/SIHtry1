@@ -21,12 +21,10 @@ public class NRC {
     String phone;
     boolean verified;
 
-    public NRC() {
-
-    }
+    public NRC() {}
 
 
-    public NRC(String user_id, int bed_count, int bed_vacant, String title, String reg_certi, String reg_num, String address, String state, String city, int pincode, String phone, boolean verified) {
+    public NRC(String user_id, int bed_count, int bed_vacant, String title, String reg_certi, String reg_num, String address, String state, String city, int pincode, String phone, String email, boolean verified) {
         this.user_id = user_id;
         this.bed_count = bed_count;
         this.bed_vacant = bed_vacant;
@@ -38,6 +36,7 @@ public class NRC {
         this.reg_num = reg_num;
         this.pincode = pincode;
         this.phone = phone;
+        this.email = email;
         this.verified = verified;
     }
 

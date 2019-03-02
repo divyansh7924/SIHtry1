@@ -200,30 +200,8 @@
                 android:hint="Phone"
                 android:inputType="number" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Upload Guradian photo" />
-
-                <Button
-                    android:id="@+id/photochildparent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginRight="25dp"
-                    android:text="Browse" />
-
-
-            </RelativeLayout>
-
             <Button
-                android:id="@+id/submit_nrc"
+                android:id="@+id/create_referral_btn_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

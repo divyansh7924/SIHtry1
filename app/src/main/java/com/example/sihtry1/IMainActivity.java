@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.sihtry1.models.NRC;
 import com.example.sihtry1.models.RCR;
+import com.example.sihtry1.models.Referral;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +36,7 @@ public class IMainActivity {
 
         DocumentReference newNoteRef = db.collection("nrc").document();
 
-        NRC nrc = new NRC(user_id, bed_count, bed_vacant, title, reg_certi, reg_num, address, state, city, pincode, phone, verified);
+        NRC nrc = new NRC(user_id, bed_count, bed_vacant, title, reg_certi, reg_num, address, state, city, pincode, phone, email, verified);
 
         newNoteRef.set(nrc).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -70,15 +72,18 @@ public class IMainActivity {
         });
     }
 
-    public void createNewReferral(final Context context, String user_id, String title,
-                             String reg_certi, String reg_num, String address, String state, String city, int pincode, String phone, String email, final boolean verified) {
+    public void createNewReferral(final Context context, String referral_id, String child_first_name, String child_last_name, String guadian_name, String rcr_id, String ncr_id,
+                                  long guardian_aadhar_num, char child_gender, String child_pic, Date dob, String symptoms, int asha_measure, int height, int weight,
+                                  String phone, String address, String state, String city, int pincode) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        DocumentReference newNoteRef = db.collection("rcr").document();
+        DocumentReference newReferralRef = db.collection("referral").document();
 
-        RCR rcr = new RCR(user_id, reg_certi, reg_num, title, address, state, city, pincode, phone, email, verified);
+        Referral referral = new Referral(referral_id, child_first_name, child_last_name, guadian_name, rcr_id, ncr_id,
+                guardian_aadhar_num, child_gender, child_pic, dob, symptoms,
+                asha_measure, height, weight, phone, address, state, city, pincode);
 
-        newNoteRef.set(rcr).addOnCompleteListener(new OnCompleteListener<Void>() {
+        newReferralRef.set(referral).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

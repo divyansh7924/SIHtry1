@@ -20,10 +20,10 @@ public class Referral {
     String referral_id;
     String child_last_name;
     String guadian_name;
-    String ncr_id;
-    @Nullable String rcr_id;
+    String nrc_id;
+    String rcr_id;
     long guardian_aadhar_num;
-    char gender;
+    char child_gender;
     String child_pic;
     Date dob;
     String symptoms;
@@ -36,17 +36,17 @@ public class Referral {
     int pincode;
     String address;
 
-    public Referral(String referral_id, String child_first_name, String child_last_name, String guadian_name, String rcr_id, String ncr_id,
-                    long guardian_aadhar_num, char gender, String child_pic, Date dob, String symptoms, int asha_measure, int height, int weight,
+    public Referral(String referral_id, String child_first_name, String child_last_name, String guadian_name, String rcr_id, String nrc_id,
+                    long guardian_aadhar_num, char child_gender, String child_pic, Date dob, String symptoms, int asha_measure, int height, int weight,
                     String phone, String address, String state, String city, int pincode) {
         this.child_first_name = child_first_name;
         this.child_last_name = child_last_name;
         this.referral_id = referral_id;
         this.guadian_name = guadian_name;
-        this.ncr_id = ncr_id;
+        this.nrc_id = nrc_id;
         this.rcr_id = rcr_id;
         this.guardian_aadhar_num = guardian_aadhar_num;
-        this.gender = gender;
+        this.child_gender = child_gender;
         this.child_pic = child_pic;
         this.dob = dob;
         this.symptoms = symptoms;
@@ -104,12 +104,12 @@ public class Referral {
         this.guadian_name = guadian_name;
     }
 
-    public String getNcr_id() {
-        return ncr_id;
+    public String getnrc_id() {
+        return nrc_id;
     }
 
-    public void setNcr_id(String ncr_id) {
-        this.ncr_id = ncr_id;
+    public void setnrc_id(String nrc_id) {
+        this.nrc_id = nrc_id;
     }
 
     public String getRcr_id() {
@@ -128,12 +128,12 @@ public class Referral {
         this.guardian_aadhar_num = guardian_aadhar_num;
     }
 
-    public char getGender() {
-        return gender;
+    public char getchild_gender() {
+        return child_gender;
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
+    public void setchild_gender(char child_gender) {
+        this.child_gender = child_gender;
     }
 
     public String getChild_pic() {

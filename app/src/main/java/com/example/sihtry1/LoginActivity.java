@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sihtry1.models.NRC;
+import com.example.sihtry1.models.RCR;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -103,23 +104,15 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("LoginActivity.java", "signInWithEmail:failure", task.getException());
-                            //Toast.makeText(getApplicationContext(), "Authentication failed.",
-                              //      Toast.LENGTH_SHORT).show();
-                            
-                            //dialog box on login failed
-                            new AlertDialog.Builder(this)
-                                .setTitle("Oops")
-                                .setMessage("Authentication failed")
-                                .setPositiveButton(android.R.string.ok, null)
-                                .show();
-                             }
+                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
     private void loginUpdateUI(FirebaseUser user) {
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String userId = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference nrcCollecRef = db.collection("nrc");
         Query nrcQuery = nrcCollecRef.whereEqualTo("user_id", userId);
@@ -131,14 +124,18 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                        Log.v("IMainActivity", "hello");
                         nrcList.add(documentSnapshot.toObject(NRC.class));
                     }
 
-                    if (nrcList.get(0).isVerified()) {
-                        nrcVerified();
-                    } else {
-                        verificationDue();
+                    try {
+                        if (nrcList.get(0).isVerified()) {
+                            Log.v("IMainActivity", "hello1");
+                            nrcVerified();
+                        } else {
+                            verificationDue();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 } else {
                     Log.v("IMainAcitivity", "Task Not Completed");
@@ -147,23 +144,27 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         CollectionReference rcrCollecRef = db.collection("rcr");
-        Query rcrQuery = nrcCollecRef.whereEqualTo("user_id", userId);
+        Query rcrQuery = rcrCollecRef.whereEqualTo("user_id", userId);
 
-        final ArrayList<NRC> rcrList = new ArrayList<>();
-        nrcQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        final ArrayList<RCR> rcrList = new ArrayList<>();
+        rcrQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                        Log.v("IMainActivity", "hello");
-                        nrcList.add(documentSnapshot.toObject(NRC.class));
+                        rcrList.add(documentSnapshot.toObject(RCR.class));
                     }
 
-                    if (nrcList.get(0).isVerified()) {
-                        rcrVerified();
-                    } else {
-                        verificationDue();
+                    try {
+                        if (rcrList.get(0).isVerified()) {
+                            Log.v("IMainActivity", "hello2");
+                            rcrVerified();
+                        } else {
+                            verificationDue();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 } else {
                     Log.v("IMainAcitivity", "Task Not Completed");

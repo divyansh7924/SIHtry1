@@ -42,6 +42,7 @@ public class NRCRegisterActivity extends AppCompatActivity {
                 IMainActivity iMainActivity = new IMainActivity();
                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                Log.v("NRCRegisterActivity", userEmail);
                 String url = "https://stackoverflow.com/questions/6367509/how-to-use-intent-in-non-activity-class";
                 iMainActivity.createNewNRC(getBaseContext(), userId, Integer.valueOf(et_bed_count.getText().toString()),
                         Integer.valueOf(et_bed_vacant.getText().toString()), et_title.getText().toString(),
