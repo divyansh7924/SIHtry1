@@ -48,7 +48,6 @@ public class RCRActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StatesActivity.class);
         startActivity(intent);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

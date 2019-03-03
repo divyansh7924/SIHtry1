@@ -16,7 +16,7 @@
         <activity android:name=".ManageProfilesActivity" />
         <activity android:name=".CitiesActivity" />
         <activity android:name=".StatesActivity" />
-        <activity android:name=".CreateReferralActivity" />
+        <activity android:name=".CreateReferralActivity"></activity>
         <activity android:name=".RCRRegisterActivity" />
         <activity android:name=".RCRActivity" />
         <activity android:name=".NRCActivity" />
@@ -38,7 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
