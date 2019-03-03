@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sihtry1.models.NRC;
+import com.example.sihtry1.models.RCR;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -111,66 +112,67 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUpdateUI(FirebaseUser user) {
-        Intent intent = new Intent(this, RCRActivity.class);
-        startActivity(intent);
+        String userId = user.getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference nrcCollecRef = db.collection("nrc");
+        Query nrcQuery = nrcCollecRef.whereEqualTo("user_id", userId);
+
+        final ArrayList<NRC> nrcList = new ArrayList<>();
+        nrcQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                        nrcList.add(documentSnapshot.toObject(NRC.class));
+                    }
+
+                    try {
+                        if (nrcList.get(0).isVerified()) {
+                            Log.v("IMainActivity", "hello1");
+                            nrcVerified();
+                        } else {
+                            verificationDue();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Log.v("IMainAcitivity", "Task Not Completed");
+                }
+            }
+        });
+
+        CollectionReference rcrCollecRef = db.collection("rcr");
+        Query rcrQuery = rcrCollecRef.whereEqualTo("user_id", userId);
+
+        final ArrayList<RCR> rcrList = new ArrayList<>();
+        rcrQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                        rcrList.add(documentSnapshot.toObject(RCR.class));
+                    }
+
+                    try {
+                        if (rcrList.get(0).isVerified()) {
+                            Log.v("IMainActivity", "hello2");
+                            rcrVerified();
+                        } else {
+                            verificationDue();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Log.v("IMainAcitivity", "Task Not Completed");
+                }
+            }
+        });
+
     }
-
-//    private void loginUpdateUI(FirebaseUser user) {
-//        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        CollectionReference nrcCollecRef = db.collection("nrc");
-//        Query nrcQuery = nrcCollecRef.whereEqualTo("user_id", userId);
-//
-//        final ArrayList<NRC> nrcList = new ArrayList<>();
-//        nrcQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//
-//                if (task.isSuccessful()) {
-//                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-//                        Log.v("IMainActivity", "hello");
-//                        nrcList.add(documentSnapshot.toObject(NRC.class));
-//                    }
-//
-//                    if (nrcList.get(0).isVerified()) {
-//                        nrcVerified();
-//                    } else {
-//                        verificationDue();
-//                    }
-//                } else {
-//                    Log.v("IMainAcitivity", "Task Not Completed");
-//                }
-//            }
-//        });
-//
-//        CollectionReference rcrCollecRef = db.collection("rcr");
-//        Query rcrQuery = nrcCollecRef.whereEqualTo("user_id", userId);
-//
-//        final ArrayList<NRC> rcrList = new ArrayList<>();
-//        nrcQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//
-//                if (task.isSuccessful()) {
-//                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-//                        Log.v("IMainActivity", "hello");
-//                        nrcList.add(documentSnapshot.toObject(NRC.class));
-//                    }
-//
-//                    if (nrcList.get(0).isVerified()) {
-//                        rcrVerified();
-//                    } else {
-//                        verificationDue();
-//                    }
-//                } else {
-//                    Log.v("IMainAcitivity", "Task Not Completed");
-//                }
-//            }
-//        });
-//
-//    }
-
-
 
     private void rcrVerified() {
         Intent intent = new Intent(getApplicationContext(), RCRActivity.class);

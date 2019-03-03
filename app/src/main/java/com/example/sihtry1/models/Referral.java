@@ -12,42 +12,52 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.annotation.Nullable;
+
 @IgnoreExtraProperties
-public class Referral implements Parcelable {
+public class Referral {
     String child_first_name;
     String referral_id;
     String child_last_name;
     String guadian_name;
-    String ncr_id;
+    String nrc_id;
     String rcr_id;
-    long guardian_aadhar_num;
-    char gender;
-    URL child_pic;
-    Date dob;
+    String guardian_aadhar_num;
+    String child_gender;
+    int day_of_birth;
+    int month_of_birth;
+    int year_of_birth;
     String symptoms;
-    int asha_measure;
-    int height;
-    int weight;
-    long phone;
+    String blood_group;
+    float asha_measure;
+    float height;
+    float weight;
+    String phone;
     String state;
     String city;
     int pincode;
     String address;
 
-    public Referral(String referral_id, String child_first_name, String child_last_name, String guadian_name, String rcr_id, String ncr_id,
-                    long guardian_aadhar_num, char gender, URL child_pic, Date dob, String symptoms, int asha_measure, int height, int weight,
-                    long phone, String address, String state, String city, int pincode) {
+    public Referral() {
+    }
+
+    public Referral(String child_first_name, String referral_id, String child_last_name, String guadian_name,
+                    String nrc_id, String rcr_id, String guardian_aadhar_num, String child_gender,
+                    int day_of_birth, int month_of_birth, int year_of_birth, String symptoms, String blood_group,
+                    float asha_measure, float height, float weight, String phone, String state, String city, int pincode, String address) {
         this.child_first_name = child_first_name;
-        this.child_last_name = child_last_name;
         this.referral_id = referral_id;
+        this.child_last_name = child_last_name;
         this.guadian_name = guadian_name;
-        this.ncr_id = ncr_id;
+        this.nrc_id = nrc_id;
         this.rcr_id = rcr_id;
         this.guardian_aadhar_num = guardian_aadhar_num;
-        this.gender = gender;
-        this.child_pic = child_pic;
-        this.dob = dob;
+        this.child_gender = child_gender;
+        this.day_of_birth = day_of_birth;
+        this.month_of_birth = month_of_birth;
+        this.year_of_birth = year_of_birth;
         this.symptoms = symptoms;
+        this.blood_group = blood_group;
         this.asha_measure = asha_measure;
         this.height = height;
         this.weight = weight;
@@ -56,18 +66,6 @@ public class Referral implements Parcelable {
         this.city = city;
         this.pincode = pincode;
         this.address = address;
-    }
-
-    private Date stringToDate(String dateString) {
-        String pattern = "E M d H:m:s z y";
-        DateFormat df = new SimpleDateFormat(pattern);
-        Date date = new Date();
-        try {
-            date = df.parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
     }
 
     public String getChild_first_name() {
@@ -102,12 +100,12 @@ public class Referral implements Parcelable {
         this.guadian_name = guadian_name;
     }
 
-    public String getNcr_id() {
-        return ncr_id;
+    public String getNrc_id() {
+        return nrc_id;
     }
 
-    public void setNcr_id(String ncr_id) {
-        this.ncr_id = ncr_id;
+    public void setNrc_id(String nrc_id) {
+        this.nrc_id = nrc_id;
     }
 
     public String getRcr_id() {
@@ -118,36 +116,44 @@ public class Referral implements Parcelable {
         this.rcr_id = rcr_id;
     }
 
-    public long getGuardian_aadhar_num() {
+    public String getGuardian_aadhar_num() {
         return guardian_aadhar_num;
     }
 
-    public void setGuardian_aadhar_num(long guardian_aadhar_num) {
+    public void setGuardian_aadhar_num(String guardian_aadhar_num) {
         this.guardian_aadhar_num = guardian_aadhar_num;
     }
 
-    public char getGender() {
-        return gender;
+    public String getChild_gender() {
+        return child_gender;
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
+    public void setChild_gender(String child_gender) {
+        this.child_gender = child_gender;
     }
 
-    public URL getChild_pic() {
-        return child_pic;
+    public int getDay_of_birth() {
+        return day_of_birth;
     }
 
-    public void setChild_pic(URL child_pic) {
-        this.child_pic = child_pic;
+    public void setDay_of_birth(int day_of_birth) {
+        this.day_of_birth = day_of_birth;
     }
 
-    public Date getDob() {
-        return dob;
+    public int getMonth_of_birth() {
+        return month_of_birth;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setMonth_of_birth(int month_of_birth) {
+        this.month_of_birth = month_of_birth;
+    }
+
+    public int getYear_of_birth() {
+        return year_of_birth;
+    }
+
+    public void setYear_of_birth(int year_of_birth) {
+        this.year_of_birth = year_of_birth;
     }
 
     public String getSymptoms() {
@@ -158,35 +164,43 @@ public class Referral implements Parcelable {
         this.symptoms = symptoms;
     }
 
-    public int getAsha_measure() {
+    public String getBlood_group() {
+        return blood_group;
+    }
+
+    public void setBlood_group(String blood_group) {
+        this.blood_group = blood_group;
+    }
+
+    public float getAsha_measure() {
         return asha_measure;
     }
 
-    public void setAsha_measure(int asha_measure) {
+    public void setAsha_measure(float asha_measure) {
         this.asha_measure = asha_measure;
     }
 
-    public int getHeight() {
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(float height) {
         this.height = height;
     }
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -220,73 +234,5 @@ public class Referral implements Parcelable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    protected Referral(Parcel in) {
-        child_first_name = in.readString();
-        referral_id = in.readString();
-        child_last_name = in.readString();
-        guadian_name = in.readString();
-        ncr_id = in.readString();
-        rcr_id = in.readString();
-        guardian_aadhar_num = in.readLong();
-        char[] gender_array = new char[1];
-        in.readCharArray(gender_array);
-        gender = gender_array[0];
-        try {
-            URL child_pic = new URL(in.readString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        dob = stringToDate(in.readString());
-        symptoms = in.readString();
-        asha_measure = in.readInt();
-        height = in.readInt();
-        weight = in.readInt();
-        phone = in.readLong();
-        state = in.readString();
-        city = in.readString();
-        pincode = in.readInt();
-        address = in.readString();
-    }
-
-    public static final Creator<Referral> CREATOR = new Creator<Referral>() {
-        @Override
-        public Referral createFromParcel(Parcel in) {
-            return new Referral(in);
-        }
-
-        @Override
-        public Referral[] newArray(int size) {
-            return new Referral[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int flags) {
-        parcel.writeString(child_first_name);
-        parcel.writeString(referral_id);
-        parcel.writeString(child_last_name);
-        parcel.writeString(guadian_name);
-        parcel.writeString(ncr_id);
-        parcel.writeString(rcr_id);
-        parcel.writeLong(guardian_aadhar_num);
-        parcel.writeCharArray(new char[]{gender});
-        parcel.writeString(child_pic.toString());
-        parcel.writeString(dob.toString());
-        parcel.writeString(symptoms);
-        parcel.writeInt(asha_measure);
-        parcel.writeInt(height);
-        parcel.writeInt(weight);
-        parcel.writeLong(phone);
-        parcel.writeString(state);
-        parcel.writeString(city);
-        parcel.writeInt(pincode);
-        parcel.writeString(address);
     }
 }

@@ -15,8 +15,16 @@
         android:text="Create New Referral" />
 
     <Button
+        android:id="@+id/rcr_btn_nrc_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/browse_NRC"
-        android:text="List of NRC's"/>
+        android:layout_marginTop="50dp"
+        android:text="List of NRC's" />
+
+    <Button
+        android:id="@+id/rcr_btn_update_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Update referral profile" />
 </LinearLayout>
