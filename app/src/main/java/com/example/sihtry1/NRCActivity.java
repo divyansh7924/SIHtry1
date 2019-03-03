@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class NRCActivity extends AppCompatActivity {
+
+    private Button nrc_current_referrals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

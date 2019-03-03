@@ -88,7 +88,7 @@ public class IMainActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    verificationDue(context);
+                    rcrUI(context);
 
                 } else {
                     Toast.makeText(context.getApplicationContext(), "Registeration Failed", Toast.LENGTH_SHORT).show();
@@ -99,6 +99,11 @@ public class IMainActivity {
 
     public void verificationDue(Context context) {
         Intent intent = new Intent(context, VerificationDueActivity.class);
+        context.startActivity(intent);
+    }
+
+    public void rcrUI(Context context) {
+        Intent intent = new Intent(context, RCRActivity.class);
         context.startActivity(intent);
     }
 
