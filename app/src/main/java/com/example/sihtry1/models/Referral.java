@@ -41,7 +41,10 @@ public class Referral {
     public Referral() {
     }
 
-    public Referral(String child_first_name, String referral_id, String child_last_name, String guadian_name, String nrc_id, String rcr_id, String guardian_aadhar_num, String child_gender, int day_of_birth, int month_of_birth, int year_of_birth, String symptoms, String blood_group, float asha_measure, float height, float weight, String phone, String state, String city, int pincode, String address) {
+    public Referral(String child_first_name, String referral_id, String child_last_name, String guadian_name,
+                    String nrc_id, String rcr_id, String guardian_aadhar_num, String child_gender,
+                    int day_of_birth, int month_of_birth, int year_of_birth, String symptoms, String blood_group,
+                    float asha_measure, float height, float weight, String phone, String state, String city, int pincode, String address) {
         this.child_first_name = child_first_name;
         this.referral_id = referral_id;
         this.child_last_name = child_last_name;

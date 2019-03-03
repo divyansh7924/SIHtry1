@@ -74,8 +74,8 @@ public class CreateReferralActivity extends AppCompatActivity {
                 }
 
 
-//                IMainActivity iMainActivity = new IMainActivity();
-                createNewReferral(getApplicationContext(), "fdvdfzv", create_referral_et_child_f_name.getText().toString(),
+                IMainActivity iMainActivity = new IMainActivity();
+                iMainActivity.createNewReferral(getApplicationContext(), "fdvdfzv", create_referral_et_child_f_name.getText().toString(),
                         create_referral_et_child_l_name.getText().toString(), create_referral_et_parent_name.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(), null,
                         create_referral_et_aadhaar_parent.getText().toString(), gender, day_of_birth, month_of_birth, year_of_birth, create_referral_et_symptoms.getText().toString(),
                         create_referral_et_bloodgp.getText().toString(), Integer.parseInt(create_referral_et_ashamsmt.getText().toString()),
@@ -101,9 +101,6 @@ public class CreateReferralActivity extends AppCompatActivity {
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 textView.setText(sdf.format(myCalendar.getTime()));
-                day_of_birth = myCalendar.getTime().getDay();
-                month_of_birth = myCalendar.getTime().getMonth();
-                year_of_birth = myCalendar.getTime().getYear();
             }
         };
 
@@ -137,35 +134,18 @@ public class CreateReferralActivity extends AppCompatActivity {
 
                                 textView.setText(dayOfMonth + "-"
                                         + (monthOfYear + 1) + "-" + year);
+                                day_of_birth = dayOfMonth;
+                                month_of_birth = monthOfYear;
+                                year_of_birth = year;
+                                Log.v("CreateReferralActivity", String.valueOf(day_of_birth));
+                                Log.v("CreateReferralActivity", String.valueOf(month_of_birth));
+                                Log.v("CreateReferralActivity", String.valueOf(year_of_birth));
 
                             }
                         }, mYear, mMonth, mDay);
                 dpd.getDatePicker().setMinDate(1990);
                 dpd.show();
 
-            }
-        });
-    }
-
-    public void createNewReferral(final Context context, String referral_id, String child_first_name, String child_last_name, String guadian_name, String rcr_id, String ncr_id,
-                                  String guardian_aadhar_num, String child_gender, int day_of_birth, int month_of_birth, int year_of_birth, String symptoms, String blood_group, int asha_measure, int height, int weight,
-                                  String phone, String address, String state, String city, int pincode) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        DocumentReference newReferralRef = db.collection("referral").document();
-
-        Referral referral = new Referral(referral_id, child_first_name, child_last_name, guadian_name, rcr_id, ncr_id,
-                guardian_aadhar_num, child_gender, day_of_birth, month_of_birth, year_of_birth, symptoms, blood_group,
-                asha_measure, height, weight, phone, state, city, pincode, address);
-
-        newReferralRef.set(referral).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Referral created", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context.getApplicationContext(), "Registeration Failed", Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }
